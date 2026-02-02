@@ -12,5 +12,20 @@ services:
     ports:
       - "5432:5432"
 
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=nexus_db
+      - DB_USER=nexus_user
+      - DB_PASS=nexus_pass
+    depends_on:
+      - db
+
 volumes:
   postgres_data:
