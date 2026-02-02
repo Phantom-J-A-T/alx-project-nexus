@@ -57,7 +57,77 @@ Throughout the program, I have gained hands-on experience with a robust industry
 * **Scalability First:** Always designing systems with the "What if we have 10,000 users?" mindset.
 
 ---
+ALX Project Nexus: Job Board Backend
+The ProDev Backend Engineering Capstone
+👋 Overview
+Project Nexus is a robust, production-ready backend system for a modern Job Board platform. This project serves as a comprehensive synthesis of the advanced backend engineering concepts covered in the ALX ProDev Program, ranging from secure authentication to database performance tuning.
 
-## 📫 Connect with Me
-* **GitHub:** [Your GitHub Profile Link]
-* **LinkedIn:** [Your LinkedIn Profile Link]
+🛠 Tech Stack
+Language: Python 3.13
+
+Framework: Django & Django REST Framework (DRF)
+
+Database: PostgreSQL (Relational)
+
+Auth: JWT (JSON Web Tokens)
+
+Documentation: Swagger / OpenAPI 3.0
+
+DevOps: Docker & Docker Compose
+
+🚀 Key Features
+1. Role-Based Access Control (RBAC)
+The system distinguishes between Admins (Recruiters) and Candidates (Talent) using a custom user model.
+
+Admins: Full CRUD access to Job Postings and Categories.
+
+Candidates: Access to browse, search, and submit applications.
+
+2. Optimized Job Search
+To handle scale, the backend implements:
+
+Advanced Indexing: Database-level B-Tree indexes on location and job_type.
+
+Efficient Querying: Custom @action endpoints utilizing istartswith for optimized index utilization.
+
+N+1 Optimization: Implementation of select_related to minimize database hits.
+
+3. Automated Documentation
+Interactive API documentation is hosted at /api/docs/ using Swagger UI, allowing for real-time testing of all endpoints and authentication flows.
+
+🏗 System Architecture
+📥 Installation & Setup
+Ensure you have Docker and Docker Desktop installed.
+
+Clone the Repository
+
+Bash
+git clone https://github.com/yourusername/alx-project-nexus.git
+cd alx-project-nexus
+Spin up the Environment
+
+Bash
+docker-compose up --build
+Run Migrations (Inside the container)
+
+Bash
+docker-compose exec web python manage.py migrate
+Access the API
+
+API Root: http://localhost:8000/api/
+
+Documentation: http://localhost:8000/api/docs/
+
+🧠 Major Learnings & Challenges
+Database Normalization: Designing a schema that handles Many-to-Many relationships for job applications efficiently.
+
+Stateless Auth: Implementing JWT to ensure secure communication without server-side session overhead.
+
+Containerization: Packaging a multi-service architecture (Django + Postgres) for seamless deployment.
+
+📝 Best Practices Implemented
+PEP 8 Compliance: Writing clean, Pythonic code.
+
+Security First: Enforcing strict permission classes at the ViewSet level.
+
+Modularity: Separating concerns into users and jobs apps for scalability.
