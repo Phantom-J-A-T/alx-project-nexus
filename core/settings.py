@@ -151,3 +151,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Project Nexus Job Board API',
+    'DESCRIPTION': 'A robust backend for managing job postings with Role-Based Access Control.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # This adds the "Authorize" button for JWT
+    'COMPONENT_SPLIT_PATCH': True,
+    'SECURITY': [{'jwt': []}],
+}

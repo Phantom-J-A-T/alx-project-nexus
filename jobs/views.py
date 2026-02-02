@@ -6,6 +6,16 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Job, Category, Application
 from .serializers import JobSerializer, CategorySerializer, ApplicationSerializer
 from .permissions import IsAdminOrReadOnly
+from drf_spectacular.utils import extend_schema, extend_schema_view
+
+@extend_schema_view(
+    list=extend_schema(summary="Retrieve all job postings"),
+    create=extend_schema(summary="Create a new job posting (Admin only)"),
+    search=extend_schema(
+        summary="Advanced job filtering",
+        description="Filter jobs by location (startswith), job type, or category name."
+    ),
+)
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """
