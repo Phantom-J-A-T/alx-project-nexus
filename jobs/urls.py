@@ -5,6 +5,7 @@ from .views import JobViewSet, CategoryViewSet
 router = DefaultRouter()
 router.register(r'jobs', JobViewSet)
 router.register(r'categories', CategoryViewSet)
+router.register(r'applications', ApplicationViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

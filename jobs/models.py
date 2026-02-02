@@ -43,3 +43,18 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+class Application(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='applications')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='my_applications')
+    resume_attachment = models.FileField(upload_to='resumes/', blank=True, null=True)
+    cover_letter = models.TextField()
+    applied_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        # Prevent a user from applying to the same job more than once
+        unique_together = ('job', 'user')
+        ordering = ['-applied_at']
+
+    def __str__(self):
+        return f"{self.user.username} - {self.job.title}"
