@@ -1,12 +1,14 @@
+
 import { useState } from 'react';
 import type { Job } from '../context/JobContext';
 
 interface FormProps {
     job: Job;
     onClose: () => void;
+    onSuccess: (message: string) => void;
 }
 
-export default function ApplicationForm({ job, onClose }: FormProps) {
+export default function ApplicationForm({ job, onClose, onSuccess }: FormProps) {
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
     const [formData, setFormData] = useState({
         fullName: '',
@@ -23,6 +25,8 @@ export default function ApplicationForm({ job, onClose }: FormProps) {
         setTimeout(() => {
             console.log("Submitted Data for Job ID " + job.id + ":", formData);
             setStatus('success');
+            onSuccess("Application submitted successfully!");
+            onClose();
         }, 1500);
     };
 
