@@ -1,17 +1,7 @@
 import { createContext, useState, useContext } from 'react';
 import type { ReactNode } from 'react';
 
-export interface Job {
-    id: number;
-    title: string;
-    description: string;
-    location: string;
-    salary?: string;
-    company_name: string;
-    job_type: string;
-    category: string;
-    experienceLevel: 'Entry-Level' | 'Mid-Level' | 'Senior';
-}
+import type { Job } from '../types';
 
 interface JobContextType {
     jobs: Job[];
@@ -79,6 +69,7 @@ export const JobProvider = ({ children }: { children: ReactNode }) => {
     );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useJobContext = () => {
     const context = useContext(JobContext);
     if (!context) {

@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import type { Job } from '../context/JobContext';
+import type { Job } from '../types';
 
 interface FormProps {
     job: Job;

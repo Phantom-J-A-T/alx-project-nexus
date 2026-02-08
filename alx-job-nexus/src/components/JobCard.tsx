@@ -1,5 +1,5 @@
 // src/components/JobCard.tsx
-import type { Job } from '../context/JobContext';
+import type { Job } from '../types';
 
 interface JobCardProps {
     job: Job;
